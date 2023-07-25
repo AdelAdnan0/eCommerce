@@ -48,13 +48,14 @@ body {
 }
 
 main section .title {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     font-family: 'Work Sans';
     color: white;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
+    text-transform: uppercase;
 }
 
 /* End Global */
@@ -68,18 +69,23 @@ nav.upper .logo {
 
 header nav.upper {
     background-color: var(--light-p);
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 5px;
     position: sticky;
     top: 0;
     z-index: 99;
+    height: 30px;
+}
+
+header nav.upper .logo {
+    font-size: 15px;
 }
 
 header nav.upper li {
     display: inline-block;
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 header nav.upper li a {
@@ -220,7 +226,7 @@ header .logo {
 /* Start Landing */
 header .landing {
     height: calc(100vh - 80px);
-    background-image: url(https://placehold.co/1280x720);
+    background-image: url(https://source.unsplash.com/random/1280x720?sig=1);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -267,7 +273,7 @@ main .handpicked {
 }
 
 main .handpicked .cards {
-    display: inline-grid;
+    display: grid;
     grid-template-columns: repeat(3, 30%);
     grid-template-rows: repeat(2, 200px);
     gap: 20px;
@@ -281,12 +287,17 @@ main .handpicked .cards :nth-child(3) {
 
 main .handpicked .cards>div {
     border: 2px dotted var(--dark-p);
+    transition: .3s;
     overflow: hidden;
 }
 
 main .handpicked .cards img {
     min-width: 100%;
     min-height: 100%;
+}
+
+main .handpicked .cards div:hover {
+    transform: scale(1.5)
 }
 
 /* Small */
@@ -314,13 +325,32 @@ main .collection .offers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    border: 1px solid var(--dark-p);
+    /* gap: 10px; */
+    border: 2px solid var(--dark-p);
+}
+
+main .collection .offers div {
+    padding: 10px;
 }
 
 main .collection .offers div img {
     width: 100%;
-    height: 100;
+    height: 100%;
+    border: 1px solid var(--dark-p);
+    filter: grayscale(1);
+    transition: .3s;
+}
+
+main .collection .offers div img:hover {
+    filter: none;
+}
+
+/* Small */
+@media (max-width: 768px) {
+    main .collection .offers {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
 }
 
 /* End Collection Section */
