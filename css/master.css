@@ -58,6 +58,13 @@ main section .title {
     text-transform: uppercase;
 }
 
+.trapezoid {
+    width: 100px;
+    border-bottom: 40px var(--dark-p) solid;
+    border-right: 25px solid transparent;
+    border-left: 25px solid transparent;
+}
+
 /* End Global */
 
 /* Start Navbar */
@@ -89,7 +96,7 @@ header nav.upper li {
 }
 
 header nav.upper li a {
-    transition: top 0.9s;
+    transition: border-bottom 0.3s;
 }
 
 header nav.upper li:not(:first-of-type) {
@@ -99,6 +106,8 @@ header nav.upper li:not(:first-of-type) {
 header nav.upper li a:hover {
     position: relative;
     bottom: 3px;
+    padding-bottom: 3px;
+    border-bottom: solid 1px var(--dark-p);
 }
 
 header nav.upper .container {
@@ -172,7 +181,12 @@ header nav.lower .container ul {
 header nav.lower .container ul li {
     padding-left: 5px;
     padding-right: 5px;
+    transition: .3s;
+}
 
+header nav.lower .container ul li:hover {
+    border-bottom: solid var(--dark-p) 1px;
+    padding-bottom: 5px;
 }
 
 header nav.lower .container ul.socials li i {
@@ -273,45 +287,53 @@ main .handpicked {
 }
 
 main .handpicked .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);
-    grid-template-rows: repeat(2, 200px);
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 20px;
     margin: 20px;
 }
 
 main .handpicked .cards :nth-child(3) {
-    grid-column: 2/3;
+    grid-column: 2/4;
     grid-row: 1/3;
 }
 
 main .handpicked .cards>div {
-    border: 2px dotted var(--dark-p);
+    border: 2px solid var(--dark-p);
     transition: .3s;
+    position: relative;
     overflow: hidden;
 }
 
 main .handpicked .cards img {
-    min-width: 100%;
-    min-height: 100%;
-}
-
-main .handpicked .cards div:hover {
-    transform: scale(1.5)
+    width: 100%;
+    height: 100%;
 }
 
 /* Small */
 @media (max-width: 768px) {
     main .handpicked .cards {
-        grid-template-columns: repeat(2, 45%);
-        grid-template-rows: repeat(3, 235px)
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr)
     }
 
     main .handpicked .cards :nth-child(3) {
         grid-column: 1/3;
-        grid-row: 2/3;
+        grid-row: 2/4;
+    }
+
+    main .handpicked .cards :nth-child(3) img {
+        position: static;
     }
 }
+
+main .handpicked .cards div:hover {
+    transform: scale(1.2);
+    z-index: 1;
+
+}
+
 
 /* End HandPicked Section */
 
@@ -325,12 +347,17 @@ main .collection .offers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    /* gap: 10px; */
     border: 2px solid var(--dark-p);
 }
 
 main .collection .offers div {
     padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+main .collection .offers div:hover img {
+    filter: none;
 }
 
 main .collection .offers div img {
@@ -341,15 +368,17 @@ main .collection .offers div img {
     transition: .3s;
 }
 
-main .collection .offers div img:hover {
-    filter: none;
-}
 
 /* Small */
 @media (max-width: 768px) {
     main .collection .offers {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
+    }
+
+    main .collection .offers div .trapezoid {
+        width: 80px;
+        border-bottom: 30px var(--dark-p) solid;
     }
 }
 
